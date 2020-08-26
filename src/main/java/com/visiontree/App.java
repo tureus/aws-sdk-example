@@ -12,15 +12,18 @@ public class App
 {
     public static void main( String[] args )
     {
-        AWSSecretsManager ssm_builder = AWSSecretsManagerClient.builder().build();
+        AWSSecretsManager ssm_client = AWSSecretsManagerClient.builder().build();
 
         ListSecretsRequest list_secrets = new ListSecretsRequest();
-        ListSecretsResult secrets_response = ssm_builder.listSecrets(list_secrets);
+        ListSecretsResult secrets_response = ssm_client.listSecrets(list_secrets);
         List<SecretListEntry> secrets = secrets_response.getSecretList();
 
         for(int i = 0; i < secrets.size(); i++) {
             SecretListEntry secret = secrets.get(i);
             System.out.println(secret);
         }
+
+        // tear down threadpool stuff
+        ssm_client.shutdown();
     }
 }
