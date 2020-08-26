@@ -23,7 +23,7 @@ public class App
             System.out.println(secret);
         }
 
-        // tear down threadpool stuff
+        // tear down threadpool stuff if it's short-lived
         ssm_client.shutdown();
     }
 }
