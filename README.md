@@ -9,7 +9,7 @@ Recommendations:
  * In the cloud, use a IAM instance profile associated with the ECS task
     * the shared ecsTaskExecutionRole we already provide to ECS fargate tasks)
     * we will inject the `AWS_REGION` as a env value for the container
- * service provider around for the life of the program (it will renew credentials as needed, pool HTTP clients to save on resources)
+ * keep the service provider instance around for the life of the program (it will renew credentials as needed, pool HTTP clients to save on resources)
 
 Running this example:
 
